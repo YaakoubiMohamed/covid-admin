@@ -1,0 +1,76 @@
+<section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Articles</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/home">Home</a></li>
+            <li class="breadcrumb-item active">Articles</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+         
+          <div class="card">
+            <div class="card-header">
+              <a href="/ajouter-articles" class="btn btn-primary">Ajouter</a>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Titre</th>
+                        <th width="40%">Contenu</th>
+                        <th>Date</th>
+                        <th>Categorie</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>                
+                    <tr *ngFor="let article of articles">
+                        <td>
+                          <img src="{{article.image}}" width="100">
+                        </td>
+                        <td>{{article.titre}}</td>
+                        <td><p  class="text">{{article.contenu}}</p></td>
+                        <td>{{article.date}}</td>
+                        <td>{{article.categorie}}</td>
+                        <td>
+                            <a (click)="Afficher(article)" class="btn btn-default">Afficher</a>
+                            <a (click)="modifier(article)" class="btn btn-success">Modifier</a>
+                            <a (click)="supp(article.uid)" class="btn btn-danger">Supprimer</a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Contenu</th>
+                        <th>Date</th>
+                        <th>Categorie</th>
+                        <th>Actions</th>
+                    </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </section>

@@ -1,0 +1,52 @@
+<div class="card m-3">
+    <h5 class="card-header">Ajouter Article</h5>
+    <div class="card-body">
+        <form [formGroup]="articleForm" >
+            
+            <div class="form-row">
+
+                <div class="form-group col-5">
+                    <label>Image</label>
+                    <input class="form-control" (change)="upload(f,img)" type="file" #f />
+                    <input type="hidden" formControlName="image" #img>
+                </div>
+            </div>
+            <div class="form-row">
+                
+                <div class="form-group col-5">
+                    <label>Titre</label>
+                    <input type="text" formControlName="titre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.titre.errors }" />
+                    <div *ngIf="submitted && f.titre.errors" class="invalid-feedback">
+                        <div *ngIf="f.titre.errors.required">titre obligatoire</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-5">
+                    <label>Contenu</label>
+                    <textarea type="text" rows="5" formControlName="contenu" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contenu.errors }" ></textarea>
+                    <div *ngIf="submitted && f.contenu.errors" class="invalid-feedback">
+                        <div *ngIf="f.contenu.errors.required">Contenu obligatoire</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-5">
+                <label>Categorie</label>
+                <select formControlName="categorie" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.categorie.errors }">
+                    <option value=""></option>
+                    <option value="Mr">Mr</option>
+                    <option value="Mrs">Mrs</option>
+                    <option value="Miss">Miss</option>
+                    <option value="Ms">Ms</option>
+                </select>
+                <div *ngIf="submitted && f.categorie.errors" class="invalid-feedback">
+                    <div *ngIf="f.categorie.errors.required">categorie obligatoire</div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" (click)="onSubmit()" class="btn btn-primary mr-1">Ajouter</button>
+                <button class="btn btn-secondary" type="reset" (click)="onReset()">Annuler</button>
+            </div>
+        </form>
+    </div>
+</div>
